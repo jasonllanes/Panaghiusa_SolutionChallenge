@@ -54,7 +54,7 @@ public class QRScanner extends AppCompatActivity {
             @Override
             public void onCodeScanned(String data) {
                 tvResult.setText(data);
-                Intent i = new Intent(QRScanner.this,Admin_App.class);
+                Intent i = new Intent(QRScanner.this,Scanned_Result.class);
                 startActivity(i);
                 finish();
             }

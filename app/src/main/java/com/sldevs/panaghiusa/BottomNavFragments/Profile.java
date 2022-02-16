@@ -60,10 +60,10 @@ public class Profile extends Fragment {
     FirebaseDatabase firebaseDatabase;
     FirebaseAuth mAuth;
     DatabaseReference databaseReference;
-    ImageView profilePicture,imgLogOut;
+    ImageView profilePicture;
     private TextView tvFullname,tvEmail,tvNumber;
     String uid;
-    Button btnShowQR;
+    Button btnShowQR,btnLogout;
     DialogFragment showQR;
     ImageView imageViewClose,ivQR;
     public Profile() {
@@ -117,7 +117,7 @@ public class Profile extends Fragment {
         tvEmail = view.findViewById(R.id.tvEmail);
         tvNumber = view.findViewById(R.id.tvNumber);
         profilePicture = view.findViewById(R.id.profilePicture);
-        imgLogOut = view.findViewById(R.id.imgLogOut);
+        btnLogout = view.findViewById(R.id.btnLogout);
 
         firebaseDatabase = FirebaseDatabase.getInstance();
         uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
@@ -166,7 +166,7 @@ public class Profile extends Fragment {
             }
         });
 
-        imgLogOut.setOnClickListener(new View.OnClickListener() {
+        btnLogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 FirebaseAuth.getInstance().signOut();

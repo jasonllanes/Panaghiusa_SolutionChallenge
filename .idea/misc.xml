@@ -38,9 +38,11 @@
         <entry key="..\:/Users/Jason/Desktop/Solution_Challenge_App_Default/Solution_Challenge_App/app/src/main/res/layout/activity_qrscanner.xml" value="0.2" />
         <entry key="..\:/Users/Jason/Desktop/Solution_Challenge_App_Default/Solution_Challenge_App/app/src/main/res/layout/activity_scan_qr.xml" value="0.1793478260869565" />
         <entry key="..\:/Users/Jason/Desktop/Solution_Challenge_App_Default/Solution_Challenge_App/app/src/main/res/layout/activity_scanned_barcode.xml" value="0.10833333333333334" />
+        <entry key="..\:/Users/Jason/Desktop/Solution_Challenge_App_Default/Solution_Challenge_App/app/src/main/res/layout/activity_scanned_result.xml" value="0.1793478260869565" />
         <entry key="..\:/Users/Jason/Desktop/Solution_Challenge_App_Default/Solution_Challenge_App/app/src/main/res/layout/activity_sign_up.xml" value="0.22" />
+        <entry key="..\:/Users/Jason/Desktop/Solution_Challenge_App_Default/Solution_Challenge_App/app/src/main/res/layout/floating_profile.xml" value="0.1793478260869565" />
         <entry key="..\:/Users/Jason/Desktop/Solution_Challenge_App_Default/Solution_Challenge_App/app/src/main/res/layout/fragment_points__system.xml" value="0.1793478260869565" />
-        <entry key="..\:/Users/Jason/Desktop/Solution_Challenge_App_Default/Solution_Challenge_App/app/src/main/res/layout/fragment_profile.xml" value="0.1793478260869565" />
+        <entry key="..\:/Users/Jason/Desktop/Solution_Challenge_App_Default/Solution_Challenge_App/app/src/main/res/layout/fragment_profile.xml" value="0.2" />
         <entry key="..\:/Users/Jason/Desktop/Solution_Challenge_App_Default/Solution_Challenge_App/app/src/main/res/layout/show_qrcode.xml" value="0.25" />
       </map>
     </option>
