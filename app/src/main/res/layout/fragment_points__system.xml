@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/white"
+    tools:context=".BottomNavFragments.Points_System">
+
+    <!-- TODO: Update blank fragment layout -->
+
+    <TextView
+        android:id="@+id/tvPoints"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:fontFamily="@font/bbold"
+        android:text="23.1"
+        android:textSize="50dp"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:fontFamily="@font/bbold"
+        android:text="TOTAL POINTS"
+        android:textSize="20dp"/>
+
+    <Button
+        android:id="@+id/btnShowQR"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Show QR Code"
+        android:layout_marginTop="150dp"
+        android:layout_gravity="center"
+        android:background="@drawable/white_rounded_corner"/>
+
+
+</LinearLayout>
