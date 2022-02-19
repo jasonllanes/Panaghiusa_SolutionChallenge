@@ -29,7 +29,7 @@ import java.nio.ByteOrder;
 
 public class P_S1 extends AppCompatActivity {
     public StepView stepView;
-    Button btnUpload,btnCapture,btnCategory;
+    Button btnUpload,btnCapture,btnCategory,btnNextS1;
     ImageView btnBackS1,ivScanned;
     TextView tvType,tvConfidence,tvAccurateness;
     int imageSize = 224;
@@ -39,6 +39,7 @@ public class P_S1 extends AppCompatActivity {
         setContentView(R.layout.activity_ps1);
         btnCapture = findViewById(R.id.btnCapture);
         btnUpload = findViewById(R.id.btnUpload);
+        btnNextS1 = findViewById(R.id.btnNextS1);
         btnCategory = findViewById(R.id.btnCategory);
         tvAccurateness = findViewById(R.id.tvAccurateness);
         tvConfidence = findViewById(R.id.tvConfidence);
@@ -46,6 +47,13 @@ public class P_S1 extends AppCompatActivity {
         stepView = findViewById(R.id.step_view);
         btnBackS1 = findViewById(R.id.btnBackS1);
         ivScanned = findViewById(R.id.ivScanned);
+
+        stepView.getState()
+                .animationType(StepView.ANIMATION_ALL)
+                .stepsNumber(4)
+                .animationDuration(getResources().getInteger(android.R.integer.config_shortAnimTime))
+                .commit();
+
         btnBackS1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -66,11 +74,18 @@ public class P_S1 extends AppCompatActivity {
 
             }
         });
-        stepView.getState()
-                .animationType(StepView.ANIMATION_ALL)
-                .stepsNumber(4)
-                .animationDuration(getResources().getInteger(android.R.integer.config_shortAnimTime))
-                .commit();
+
+        btnNextS1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(P_S1.this,P_S2.class);
+                startActivity(i);
+
+            }
+        });
+
+
+
 
 //        getSupportFragmentManager().beginTransaction()
 //                .replace(R.id.steps_frame,new S1()).commit();
@@ -139,6 +154,7 @@ public class P_S1 extends AppCompatActivity {
             classifyImage(image);
             tvAccurateness.setVisibility(View.VISIBLE);
             btnCategory.setVisibility(View.VISIBLE);
+            btnNextS1.setVisibility(View.VISIBLE);
         }
         super.onActivityResult(requestCode, resultCode, data);
     }

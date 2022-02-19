@@ -19,7 +19,7 @@
             android:orientation="horizontal"
             android:background="@android:color/transparent">
             <ImageView
-                android:id="@+id/btnBackS1"
+                android:id="@+id/btnBackS2"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:background="@drawable/back"

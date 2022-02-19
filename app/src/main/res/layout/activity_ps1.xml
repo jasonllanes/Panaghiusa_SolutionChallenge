@@ -63,18 +63,7 @@
         android:layout_height="match_parent"
         android:layout_gravity="center"
         android:orientation="vertical">
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="10dp"
-            android:layout_gravity="center" />
-        <TextView
-            android:id="@+id/tvType"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Type of Plastic"
-            android:textSize="20dp"
-            android:textColor="@android:color/holo_green_light"
-            android:layout_gravity="center"/>
+
 
         <ImageView
             android:id="@+id/ivScanned"
@@ -83,19 +72,34 @@
             android:layout_gravity="center"
             android:background="@drawable/avatar"/>
         <TextView
+            android:id="@+id/tvType"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Type of Plastic"
+            android:textSize="20dp"
+            android:textAllCaps="true"
+            android:textColor="@android:color/holo_green_light"
+            android:layout_gravity="center"/>
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_gravity="center"
+            android:background="@android:color/darker_gray"/>
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Confidence: "
-            android:textSize="20dp"
+            android:textSize="10dp"
+            android:textAllCaps="true"
             android:textColor="@color/black"
-            android:layout_gravity="center"/>
+            />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:text=""
             android:textColor="#000"
-            android:textSize="22sp"
+            android:textSize="15sp"
             android:id="@+id/tvConfidence"
             android:layout_below="@+id/confidencesText"
             />
@@ -141,6 +145,7 @@
             android:backgroundTint="@color/white"/>
         <Button
             android:id="@+id/btnNextS1"
+            android:visibility="invisible"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Next "
