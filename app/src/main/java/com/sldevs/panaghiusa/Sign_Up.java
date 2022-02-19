@@ -171,7 +171,7 @@ public class Sign_Up extends AppCompatActivity {
     public void defaultProfile(){
         String id = FirebaseAuth.getInstance().getUid();
         StorageReference profilePic = storageReference.child(id + ".png");
-        StorageReference profilePicRef = storageReference.child("ProfilePicture/" + id + ".png");
+        StorageReference profilePicRef = storageReference.child("ProfilePicture/" + id + "user_profile.png");
         profilePic.getName().equals(profilePicRef.getName());
         profilePic.getPath().equals(profilePicRef.getPath());
 
@@ -224,7 +224,7 @@ public class Sign_Up extends AppCompatActivity {
         qrgEncoder = new QRGEncoder("User ID: " + id + "\nEmail: " + etEmail.getText().toString(), null, QRGContents.Type.TEXT, dimen);
         try {
             StorageReference qrCode = storageReference.child(id + ".png");
-            StorageReference qrCodeRef = storageReference.child("QRCodes/" + id + ".png");
+            StorageReference qrCodeRef = storageReference.child("QRCodes/" + id + "user_qr.png");
             qrCode.getName().equals(qrCodeRef.getName());
             qrCode.getPath().equals(qrCodeRef.getPath());
             // getting our qrcode in the form of bitmap.

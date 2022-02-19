@@ -55,6 +55,7 @@ public class QRScanner extends AppCompatActivity {
             public void onCodeScanned(String data) {
                 tvResult.setText(data);
                 Intent i = new Intent(QRScanner.this,Scanned_Result.class);
+                i.putExtra("QR_DATA", data);
                 startActivity(i);
                 finish();
             }

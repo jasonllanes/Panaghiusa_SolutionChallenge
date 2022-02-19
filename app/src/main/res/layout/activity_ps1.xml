@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ContributionSteps_Plastic.P_S1">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:background="@color/green">
+        <LinearLayout
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:orientation="horizontal"
+            android:background="@android:color/transparent">
+            <ImageView
+                android:id="@+id/btnBackS1"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:background="@drawable/back"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Plastic Contribution"
+                android:textSize="25dp"
+                android:fontFamily="@font/light"
+                android:layout_margin="10dp"/>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <com.shuhart.stepview.StepView
+        android:id="@+id/step_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="15dp"
+        app:sv_doneCircleColor="@color/green"
+        app:sv_doneCircleRadius="12dp"
+        app:sv_doneStepLineColor="@color/green"
+        app:sv_doneStepMarkColor="@color/black"
+        app:sv_nextStepLineColor="@color/black"
+        app:sv_nextTextColor="@color/black"
+        app:sv_selectedCircleColor="@color/green"
+        app:sv_selectedCircleRadius="12dp"
+        app:sv_selectedStepNumberColor="@color/white"
+        app:sv_selectedTextColor="@color/white"
+        app:sv_stepLineWidth="2dp"
+        app:sv_stepNumberTextSize="15dp"
+        app:sv_stepPadding="5dp"
+        app:sv_stepViewStyle="@style/StepView"
+        android:layout_marginBottom="10dp"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:orientation="vertical">
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="10dp"
+            android:layout_gravity="center" />
+        <TextView
+            android:id="@+id/tvType"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Type of Plastic"
+            android:textSize="20dp"
+            android:textColor="@android:color/holo_green_light"
+            android:layout_gravity="center"/>
+
+        <ImageView
+            android:id="@+id/ivScanned"
+            android:layout_width="300dp"
+            android:layout_height="300dp"
+            android:layout_gravity="center"
+            android:background="@drawable/avatar"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Confidence: "
+            android:textSize="20dp"
+            android:textColor="@color/black"
+            android:layout_gravity="center"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:text=""
+            android:textColor="#000"
+            android:textSize="22sp"
+            android:id="@+id/tvConfidence"
+            android:layout_below="@+id/confidencesText"
+            />
+
+
+        <Button
+            android:id="@+id/btnCapture"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Capture Image"
+            android:textSize="20dp"
+            android:textColor="@color/black"
+            android:fontFamily="@font/light"
+            android:backgroundTint="@color/white"/>
+        <Button
+            android:id="@+id/btnUpload"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="20dp"
+            android:text="Upload Image"
+            android:textSize="20dp"
+            android:textColor="@color/black"
+            android:fontFamily="@font/light"
+            android:backgroundTint="@color/white"/>
+        <TextView
+            android:id="@+id/tvAccurateness"
+            android:visibility="invisible"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Are we providing the correct result? If not"
+            android:textSize="15dp"
+            android:textColor="@android:color/holo_red_dark"
+            android:layout_gravity="center"/>
+        <Button
+            android:id="@+id/btnCategory"
+            android:visibility="invisible"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Select accurate category"
+            android:textSize="10dp"
+            android:textColor="@color/black"
+            android:fontFamily="@font/light"
+            android:backgroundTint="@color/white"/>
+        <Button
+            android:id="@+id/btnNextS1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Next "
+            android:textSize="15dp"
+            android:textColor="@color/black"
+            android:fontFamily="@font/light"
+            android:layout_gravity="right"
+            android:backgroundTint="@color/white"/>
+    </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

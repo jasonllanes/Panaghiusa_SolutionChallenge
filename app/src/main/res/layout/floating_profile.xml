@@ -90,12 +90,20 @@
                             android:text="My QR Code"
                             android:textSize="15sp" />
                         <Button
-                            android:id="@+id/button4"
+                            android:id="@+id/btnStats"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="20dp"
                             android:background="@drawable/white_rounded_corner"
-                            android:text="Button"
+                            android:text="MY STATS"
+                            android:textSize="15sp" />
+                        <Button
+                            android:id="@+id/btnTrack"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="20dp"
+                            android:background="@drawable/white_rounded_corner"
+                            android:text="REPORT TRACK"
                             android:textSize="15sp" />
                         <Button
                             android:id="@+id/btnLogout"

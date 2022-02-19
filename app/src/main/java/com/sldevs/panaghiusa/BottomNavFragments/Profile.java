@@ -208,7 +208,7 @@ public class Profile extends Fragment {
         String id = FirebaseAuth.getInstance().getUid();
         FirebaseStorage storage = FirebaseStorage.getInstance();
         StorageReference storageRef = storage.getReference();
-        StorageReference getQR = storageRef.child("ProfilePicture/"+ id+ ".png");
+        StorageReference getQR = storageRef.child("ProfilePicture/"+ id+ "user_profile.png");
         final long ONE_MEGABYTE = 1024 * 1024;
         getQR.getBytes(ONE_MEGABYTE).addOnSuccessListener(new OnSuccessListener<byte[]>() {
             @Override
@@ -221,7 +221,7 @@ public class Profile extends Fragment {
     public void loadQRCode(String id,ImageView qrcode) throws IOException {
         FirebaseStorage storage = FirebaseStorage.getInstance();
         StorageReference storageRef = storage.getReference();
-        StorageReference getQR = storageRef.child("QRCodes/"+ id+ ".png");
+        StorageReference getQR = storageRef.child("QRCodes/"+ id+ "user_qr.png");
         final long ONE_MEGABYTE = 1024 * 1024;
         getQR.getBytes(ONE_MEGABYTE).addOnSuccessListener(new OnSuccessListener<byte[]>() {
             @Override

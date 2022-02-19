@@ -1,13 +1,19 @@
 package com.sldevs.panaghiusa.BottomNavFragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
+import android.widget.ImageView;
 
+import com.sldevs.panaghiusa.ContributionSteps_Pane;
+import com.sldevs.panaghiusa.ContributionSteps_Plastic.P_S1;
 import com.sldevs.panaghiusa.R;
 
 /**
@@ -25,6 +31,9 @@ public class Contribute extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+
+    FrameLayout flContribution;
+    ImageView ivPlastic,ivFood,ivDonate;
 
     public Contribute() {
         // Required empty public constructor
@@ -61,6 +70,23 @@ public class Contribute extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_contribute, container, false);
+        View view = inflater.inflate(R.layout.fragment_contribute, container, false);
+        ivPlastic = view.findViewById(R.id.ivPlastic);
+        ivFood = view.findViewById(R.id.ivFood);
+        ivDonate = view.findViewById(R.id.ivDonate);
+
+        ivPlastic.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(getContext(), P_S1.class);
+                startActivity(i);
+            }
+        });
+//        flContribution = view.findViewById(R.id.flContribution);
+
+
+
+
+        return view;
     }
 }

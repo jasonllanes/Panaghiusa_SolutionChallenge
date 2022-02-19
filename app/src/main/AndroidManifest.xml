@@ -17,6 +17,18 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Panaghiusa">
         <activity
+            android:name=".ContributionSteps_Plastic.P_S2"
+            android:exported="false" />
+        <activity
+            android:name=".ContributionSteps_Plastic.P_S1"
+            android:exported="false" />
+        <activity
+            android:name=".ContributionSteps_Pane"
+            android:exported="false" />
+        <activity
+            android:name=".Report_Track"
+            android:exported="false" />
+        <activity
             android:name=".Scanned_Result"
             android:exported="false" />
         <activity
