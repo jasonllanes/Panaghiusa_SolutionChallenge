@@ -25,6 +25,7 @@
         <entry key="..\:/Users/Jason/Desktop/Solution_Challenge_App/app/src/main/res/layout/fragment_profile.xml" value="0.25" />
         <entry key="..\:/Users/Jason/Desktop/Solution_Challenge_App/app/src/main/res/menu/bottom_menu.xml" value="0.25" />
         <entry key="..\:/Users/Jason/Desktop/Solution_Challenge_App_Default/Solution_Challenge_App/app/src/main/res/drawable/avatar.xml" value="0.153" />
+        <entry key="..\:/Users/Jason/Desktop/Solution_Challenge_App_Default/Solution_Challenge_App/app/src/main/res/drawable/contribute.xml" value="0.1495" />
         <entry key="..\:/Users/Jason/Desktop/Solution_Challenge_App_Default/Solution_Challenge_App/app/src/main/res/drawable/gradient_1.xml" value="0.1505" />
         <entry key="..\:/Users/Jason/Desktop/Solution_Challenge_App_Default/Solution_Challenge_App/app/src/main/res/drawable/green_container.xml" value="0.1505" />
         <entry key="..\:/Users/Jason/Desktop/Solution_Challenge_App_Default/Solution_Challenge_App/app/src/main/res/drawable/green_rounded_corner.xml" value="0.166" />
@@ -37,10 +38,12 @@
         <entry key="..\:/Users/Jason/Desktop/Solution_Challenge_App_Default/Solution_Challenge_App/app/src/main/res/layout/activity_getting_started.xml" value="0.1" />
         <entry key="..\:/Users/Jason/Desktop/Solution_Challenge_App_Default/Solution_Challenge_App/app/src/main/res/layout/activity_home_screen.xml" value="0.2" />
         <entry key="..\:/Users/Jason/Desktop/Solution_Challenge_App_Default/Solution_Challenge_App/app/src/main/res/layout/activity_log_in.xml" value="0.22" />
+        <entry key="..\:/Users/Jason/Desktop/Solution_Challenge_App_Default/Solution_Challenge_App/app/src/main/res/layout/activity_os1.xml" value="0.17708333333333334" />
         <entry key="..\:/Users/Jason/Desktop/Solution_Challenge_App_Default/Solution_Challenge_App/app/src/main/res/layout/activity_plastic_report.xml" value="0.1793478260869565" />
         <entry key="..\:/Users/Jason/Desktop/Solution_Challenge_App_Default/Solution_Challenge_App/app/src/main/res/layout/activity_point_system.xml" value="0.1793478260869565" />
         <entry key="..\:/Users/Jason/Desktop/Solution_Challenge_App_Default/Solution_Challenge_App/app/src/main/res/layout/activity_ps1.xml" value="0.25" />
-        <entry key="..\:/Users/Jason/Desktop/Solution_Challenge_App_Default/Solution_Challenge_App/app/src/main/res/layout/activity_ps2.xml" value="0.1793478260869565" />
+        <entry key="..\:/Users/Jason/Desktop/Solution_Challenge_App_Default/Solution_Challenge_App/app/src/main/res/layout/activity_ps2.xml" value="0.25" />
+        <entry key="..\:/Users/Jason/Desktop/Solution_Challenge_App_Default/Solution_Challenge_App/app/src/main/res/layout/activity_ps3.xml" value="0.25" />
         <entry key="..\:/Users/Jason/Desktop/Solution_Challenge_App_Default/Solution_Challenge_App/app/src/main/res/layout/activity_qrscanner.xml" value="0.2" />
         <entry key="..\:/Users/Jason/Desktop/Solution_Challenge_App_Default/Solution_Challenge_App/app/src/main/res/layout/activity_scan_qr.xml" value="0.1793478260869565" />
         <entry key="..\:/Users/Jason/Desktop/Solution_Challenge_App_Default/Solution_Challenge_App/app/src/main/res/layout/activity_scanned_barcode.xml" value="0.10833333333333334" />
@@ -56,6 +59,8 @@
         <entry key="..\:/Users/Jason/Desktop/Solution_Challenge_App_Default/Solution_Challenge_App/app/src/main/res/layout/fragment_profile.xml" value="0.2" />
         <entry key="..\:/Users/Jason/Desktop/Solution_Challenge_App_Default/Solution_Challenge_App/app/src/main/res/layout/fragment_s1.xml" value="0.2" />
         <entry key="..\:/Users/Jason/Desktop/Solution_Challenge_App_Default/Solution_Challenge_App/app/src/main/res/layout/fragment_s2.xml" value="0.1793478260869565" />
+        <entry key="..\:/Users/Jason/Desktop/Solution_Challenge_App_Default/Solution_Challenge_App/app/src/main/res/layout/plastic_categories.xml" value="0.25" />
+        <entry key="..\:/Users/Jason/Desktop/Solution_Challenge_App_Default/Solution_Challenge_App/app/src/main/res/layout/plastic_category.xml" value="0.5" />
         <entry key="..\:/Users/Jason/Desktop/Solution_Challenge_App_Default/Solution_Challenge_App/app/src/main/res/layout/show_qrcode.xml" value="0.25" />
         <entry key="..\:/Users/Jason/Desktop/Solution_Challenge_App_Default/Solution_Challenge_App/app/src/main/res/menu/bottom_menu.xml" value="0.22083333333333333" />
       </map>

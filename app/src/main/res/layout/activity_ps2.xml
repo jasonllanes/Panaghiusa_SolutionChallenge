@@ -22,8 +22,7 @@
                 android:id="@+id/btnBackS2"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                android:background="@drawable/back"
-                />
+                android:background="@drawable/back" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -54,46 +53,144 @@
         app:sv_stepPadding="5dp"
         app:sv_stepViewStyle="@style/StepView"/>
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
+        android:padding="20dp"
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/tvType"
+            android:id="@+id/tvReportID"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Type of Plastic"
+            android:text="321323123"
+            android:textSize="20dp"
+            android:fontFamily="@font/bbold"
+            android:textColor="@color/green"
+            android:layout_gravity="left"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Contribution ID"
             android:textSize="20dp"
             android:textColor="@color/black"
-            android:layout_gravity="center"/>
+            android:layout_gravity="left"/>
 
+        <TextView
+            android:id="@+id/tvFullnameReport"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Jason S. Llanes"
+            android:textSize="20dp"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/bbold"
+            android:textColor="@color/green"
+            android:layout_gravity="left"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Fullname"
+            android:textSize="20dp"
+            android:textColor="@color/black"
+            android:layout_gravity="left"/>
 
-        <ImageView
-            android:layout_width="300dp"
-            android:layout_height="300dp"
-            android:layout_gravity="center"
-            android:background="@drawable/avatar"/>
+        <TextView
+            android:id="@+id/tvMobileNo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="09166873915"
+            android:textSize="20dp"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/bbold"
+            android:textColor="@color/green"
+            android:layout_gravity="left"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Mobile No."
+            android:textSize="20dp"
+            android:textColor="@color/black"
+            android:layout_gravity="left"/>
 
+        <TextView
+            android:id="@+id/tvAddress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Upper 20 - 21st Nazareth"
+            android:textSize="20dp"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/bbold"
+            android:textColor="@color/green"
+            android:layout_gravity="left"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Address"
+            android:textSize="20dp"
+            android:textColor="@color/black"
+            android:layout_gravity="left"/>
+        <TextView
+            android:id="@+id/tvLatandLong"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="123.45,123.45"
+            android:textSize="20dp"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/bbold"
+            android:textColor="@color/green"
+            android:layout_gravity="left"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Exact Loaction"
+            android:textSize="20dp"
+            android:textColor="@color/black"
+            android:layout_gravity="left"/>
+        <TextView
+            android:id="@+id/btnGetLocation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="(Click here to get exact location)"
+            android:textSize="20dp"
+            android:textColor="@android:color/holo_red_dark"
+            android:layout_gravity="left"/>
 
-        <Button
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="Capture Image"
-            android:textSize="20dp"
-            android:textColor="@color/black"
-            android:fontFamily="@font/light"
-            android:backgroundTint="@color/white"/>
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="20dp"
-            android:text="Upload Image"
-            android:textSize="20dp"
-            android:textColor="@color/black"
-            android:fontFamily="@font/light"
-            android:backgroundTint="@color/white"/>
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp">
+
+            <Button
+                android:id="@+id/btnPreviousS2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:backgroundTint="@color/white"
+                android:fontFamily="@font/light"
+                android:text="Back "
+                android:textColor="@color/black"
+                android:textSize="15dp"
+                app:layout_constraintStart_toStartOf="parent"
+                tools:ignore="MissingConstraints" />
+
+            <Button
+                android:id="@+id/btnNextS2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:backgroundTint="@color/white"
+                android:fontFamily="@font/light"
+                android:text="Next "
+                android:textColor="@color/black"
+                android:textSize="15dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                tools:ignore="MissingConstraints" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
     </LinearLayout>
-
+    </ScrollView>
 </LinearLayout>

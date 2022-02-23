@@ -2,20 +2,28 @@ package com.sldevs.panaghiusa.ContributionSteps_Plastic;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.DialogFragment;
 
 import android.Manifest;
+import android.app.Activity;
+import android.app.Dialog;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
+import android.graphics.drawable.ColorDrawable;
 import android.media.ThumbnailUtils;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.View;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.shuhart.stepview.StepView;
 import com.sldevs.panaghiusa.R;
 import com.sldevs.panaghiusa.ml.Model;
@@ -23,6 +31,7 @@ import com.sldevs.panaghiusa.ml.Model;
 import org.tensorflow.lite.DataType;
 import org.tensorflow.lite.support.tensorbuffer.TensorBuffer;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
@@ -32,6 +41,7 @@ public class P_S1 extends AppCompatActivity {
     Button btnUpload,btnCapture,btnCategory,btnNextS1;
     ImageView btnBackS1,ivScanned;
     TextView tvType,tvConfidence,tvAccurateness;
+    public static final int GET_FROM_GALLERY = 3;
     int imageSize = 224;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,7 +60,7 @@ public class P_S1 extends AppCompatActivity {
 
         stepView.getState()
                 .animationType(StepView.ANIMATION_ALL)
-                .stepsNumber(4)
+                .stepsNumber(3)
                 .animationDuration(getResources().getInteger(android.R.integer.config_shortAnimTime))
                 .commit();
 
@@ -74,6 +84,13 @@ public class P_S1 extends AppCompatActivity {
 
             }
         });
+        btnUpload.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivityForResult(new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.INTERNAL_CONTENT_URI), GET_FROM_GALLERY);
+            }
+        });
+//
 
         btnNextS1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -85,7 +102,16 @@ public class P_S1 extends AppCompatActivity {
         });
 
 
-
+        btnCategory.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Dialog builder = new Dialog(P_S1.this);
+                builder.requestWindowFeature(Window.FEATURE_NO_TITLE);
+                builder.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
+                builder.setContentView(R.layout.plastic_category);
+                builder.show();
+            }
+        });
 
 //        getSupportFragmentManager().beginTransaction()
 //                .replace(R.id.steps_frame,new S1()).commit();
@@ -144,6 +170,7 @@ public class P_S1 extends AppCompatActivity {
     }
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+
         if(requestCode == 1 && resultCode== RESULT_OK){
             Bitmap image = (Bitmap) data.getExtras().get("data");
             int dimension = Math.min(image.getWidth(), image.getHeight());
@@ -157,6 +184,30 @@ public class P_S1 extends AppCompatActivity {
             btnNextS1.setVisibility(View.VISIBLE);
         }
         super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode==GET_FROM_GALLERY && resultCode == Activity.RESULT_OK) {
+            Uri selectedImage = data.getData();
+            Bitmap image = null;
+            try {
+                image = MediaStore.Images.Media.getBitmap(this.getContentResolver(), selectedImage);
+                int dimension = Math.min(image.getWidth(), image.getHeight());
+                image = ThumbnailUtils.extractThumbnail(image,dimension, dimension);
+                ivScanned.setImageBitmap(image);
+
+                image = Bitmap.createScaledBitmap(image, imageSize, imageSize,false);
+                classifyImage(image);
+                tvAccurateness.setVisibility(View.VISIBLE);
+                btnCategory.setVisibility(View.VISIBLE);
+                btnNextS1.setVisibility(View.VISIBLE);
+            } catch (FileNotFoundException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            } catch (IOException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+        }
+
+
     }
 
 
