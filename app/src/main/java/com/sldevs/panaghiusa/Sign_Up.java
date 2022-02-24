@@ -139,7 +139,15 @@ public class Sign_Up extends AppCompatActivity {
                             String currentDate = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).format(new Date());
                             String currentTime = new SimpleDateFormat("HH:mm:ss", Locale.getDefault()).format(new Date());
                             String id = FirebaseAuth.getInstance().getUid();
-                            User user = new User(id,fullname,email,number,password,"0",currentDate,currentTime);
+
+                            int timeIdentifier = Integer.parseInt(currentTime.substring(0,2));
+                            if(timeIdentifier >= 12){
+                                currentTime = currentTime + " PM";
+                            }else{
+                                currentTime = currentTime + " AM";
+                            }
+
+                            User user = new User(id,"https://firebasestorage.googleapis.com/v0/b/panaghiusa-28480.appspot.com/o/ProfilePicture%2F" + id+"user_profile.png?alt=media&token=7f2781fc-0fd8-425b-b766-9d03bad7595d",fullname,email,number,password,"0",currentDate,currentTime);
 
                             FirebaseDatabase.getInstance().getReference("Users")
                                     .child(FirebaseAuth.getInstance().getCurrentUser().getUid())

@@ -28,6 +28,7 @@ import androidx.core.content.ContextCompat;
 import com.shuhart.stepview.StepView;
 import com.sldevs.panaghiusa.R;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 import java.util.Random;
@@ -104,6 +105,11 @@ public class P_S2 extends AppCompatActivity {
 
         stepView.getState()
                 .animationType(StepView.ANIMATION_ALL)
+                .steps(new ArrayList<String>() {{
+                    add("First Step");
+                    add("Second Step");
+                    add("Third Step");
+                }})
                 .stepsNumber(3)
                 .animationDuration(getResources().getInteger(android.R.integer.config_shortAnimTime))
                 .commit();
@@ -150,7 +156,7 @@ public class P_S2 extends AppCompatActivity {
                 latitude=String.valueOf(lat);
                 longitude=String.valueOf(longi);
 
-                tvLatandLong.setText("Your Location:"+"\n"+"Latitude= "+latitude+"\n"+"Longitude= "+longitude);
+                tvLatandLong.setText(latitude + "," + longitude);
             }
             else if (LocationNetwork !=null)
             {
@@ -160,7 +166,7 @@ public class P_S2 extends AppCompatActivity {
                 latitude=String.valueOf(lat);
                 longitude=String.valueOf(longi);
 
-                tvLatandLong.setText("Your Location:"+"\n"+"Latitude= "+latitude+"\n"+"Longitude= "+longitude);
+                tvLatandLong.setText(latitude + "," + longitude);
             }
             else if (LocationPassive !=null)
             {
@@ -170,7 +176,7 @@ public class P_S2 extends AppCompatActivity {
                 latitude=String.valueOf(lat);
                 longitude=String.valueOf(longi);
 
-                tvLatandLong.setText("Your Location:"+"\n"+"Latitude= "+latitude+"\n"+"Longitude= "+longitude);
+                tvLatandLong.setText(latitude + "," + longitude);
             }
             else
             {

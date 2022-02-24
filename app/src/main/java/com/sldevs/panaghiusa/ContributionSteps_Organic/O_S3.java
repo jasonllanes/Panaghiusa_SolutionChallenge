@@ -1,4 +1,4 @@
-package com.sldevs.panaghiusa.ContributionSteps_Plastic;
+package com.sldevs.panaghiusa.ContributionSteps_Organic;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -14,24 +14,21 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.shuhart.stepview.StepView;
+import com.sldevs.panaghiusa.ContributionSteps_Plastic.P_S3;
 import com.sldevs.panaghiusa.Home_Screen;
 import com.sldevs.panaghiusa.Plastic_Contribution;
 import com.sldevs.panaghiusa.R;
-import com.sldevs.panaghiusa.Sign_Up;
-import com.sldevs.panaghiusa.User;
 
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.Locale;
 
-public class P_S3 extends AppCompatActivity {
+public class O_S3 extends AppCompatActivity {
     public StepView stepView;
     TextView tvTrack,tvLabel;
     Button btnSubmit,btnCancel,btnTrack;
@@ -43,8 +40,7 @@ public class P_S3 extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_ps3);
-
+        setContentView(R.layout.activity_os3);
 
         mAuth = FirebaseAuth.getInstance();
         storage = FirebaseStorage.getInstance();
@@ -61,16 +57,10 @@ public class P_S3 extends AppCompatActivity {
 
         stepView.getState()
                 .animationType(StepView.ANIMATION_ALL)
-                .steps(new ArrayList<String>() {{
-                    add("First Step");
-                    add("Second Step");
-                    add("Third Step");
-                }})
                 .stepsNumber(3)
                 .animationDuration(getResources().getInteger(android.R.integer.config_shortAnimTime))
                 .commit();
         stepView.go(2, true);
-
 
         btnSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -94,14 +84,14 @@ public class P_S3 extends AppCompatActivity {
                 }
 
                 Plastic_Contribution pc = new Plastic_Contribution(contrbutionID,fullname,number,address,latandlong,currentDate,currentTime);
-                FirebaseDatabase.getInstance().getReference("PlasticContribution")
+                FirebaseDatabase.getInstance().getReference("OrganicContribution")
                         .child(contrbutionID)
                         .setValue(pc).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         if(task.isSuccessful()){
                             tvLabel.setText("Thank you for contributing!");
-                            Toast.makeText(P_S3.this,"Thank you for contributing!",Toast.LENGTH_LONG).show();
+                            Toast.makeText(O_S3.this,"Thank you for contributing!",Toast.LENGTH_LONG).show();
                             stepView.done(true);
                             pbLoadingContribution.setVisibility(View.GONE);
                             btnBackS3.setVisibility(View.GONE);
@@ -111,9 +101,9 @@ public class P_S3 extends AppCompatActivity {
                             btnTrack.setVisibility(View.VISIBLE);
 
                         }else{
-                            Toast.makeText(P_S3.this,"Contribution Failed!",Toast.LENGTH_LONG).show();
+                            Toast.makeText(O_S3.this,"Contribution Failed!",Toast.LENGTH_LONG).show();
                             pbLoadingContribution.setVisibility(View.GONE);
-                            Intent i = new Intent(P_S3.this, Home_Screen.class);
+                            Intent i = new Intent(O_S3.this, Home_Screen.class);
                             startActivity(i);
                             finish();
                         }
@@ -122,10 +112,11 @@ public class P_S3 extends AppCompatActivity {
 
             }
         });
+
         btnTrack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(P_S3.this,Home_Screen.class);
+                Intent i = new Intent(O_S3.this,Home_Screen.class);
                 i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(i);
                 finish();
@@ -136,7 +127,7 @@ public class P_S3 extends AppCompatActivity {
     @Override
     public void onBackPressed() {
 
-        Intent i = new Intent(P_S3.this,Home_Screen.class);
+        Intent i = new Intent(O_S3.this,Home_Screen.class);
         i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(i);
         finish();

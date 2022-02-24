@@ -47,7 +47,7 @@
         app:sv_selectedCircleColor="@color/green"
         app:sv_selectedCircleRadius="12dp"
         app:sv_selectedStepNumberColor="@color/white"
-        app:sv_selectedTextColor="@color/white"
+        app:sv_selectedTextColor="@color/black"
         app:sv_stepLineWidth="2dp"
         app:sv_stepNumberTextSize="15dp"
         app:sv_stepPadding="5dp"

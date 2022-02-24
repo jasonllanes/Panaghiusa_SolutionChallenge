@@ -19,6 +19,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Panaghiusa">
         <activity
+            android:name=".ContributionSteps_Organic.O_S3"
+            android:exported="false" />
+        <activity
+            android:name=".ProfilePane.MyContribution"
+            android:exported="false" />
+        <activity
             android:name=".ContributionSteps_Organic.O_S2"
             android:exported="false" />
         <activity

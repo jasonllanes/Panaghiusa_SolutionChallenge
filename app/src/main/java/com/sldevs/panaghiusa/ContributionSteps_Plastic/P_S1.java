@@ -35,6 +35,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
+import java.util.ArrayList;
 
 public class P_S1 extends AppCompatActivity {
     public StepView stepView;
@@ -60,6 +61,11 @@ public class P_S1 extends AppCompatActivity {
 
         stepView.getState()
                 .animationType(StepView.ANIMATION_ALL)
+                .steps(new ArrayList<String>() {{
+                    add("First Step");
+                    add("Second Step");
+                    add("Third Step");
+                }})
                 .stepsNumber(3)
                 .animationDuration(getResources().getInteger(android.R.integer.config_shortAnimTime))
                 .commit();

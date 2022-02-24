@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 
+import com.sldevs.panaghiusa.ContributionSteps_Organic.O_S1;
 import com.sldevs.panaghiusa.ContributionSteps_Pane;
 import com.sldevs.panaghiusa.ContributionSteps_Plastic.P_S1;
 import com.sldevs.panaghiusa.R;
@@ -79,6 +80,13 @@ public class Contribute extends Fragment {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(getContext(), P_S1.class);
+                startActivity(i);
+            }
+        });
+        ivFood.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(getContext(), O_S1.class);
                 startActivity(i);
             }
         });

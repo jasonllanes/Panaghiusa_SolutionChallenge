@@ -1,9 +1,211 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ContributionSteps_Organic.O_S1">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".ContributionSteps_Organic.O_S1">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:background="@color/green">
+            <LinearLayout
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:orientation="horizontal"
+                android:background="@android:color/transparent">
+                <ImageView
+                    android:id="@+id/btnBackS1"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:background="@drawable/back"
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Organic Waste Contribution"
+                    android:textSize="20dp"
+                    android:fontFamily="@font/light"
+                    android:layout_margin="10dp"/>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <com.shuhart.stepview.StepView
+            android:id="@+id/step_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            app:sv_doneCircleColor="@color/green"
+            app:sv_doneCircleRadius="12dp"
+            app:sv_doneStepLineColor="@color/green"
+            app:sv_doneStepMarkColor="@color/black"
+            app:sv_nextStepLineColor="@color/black"
+            app:sv_nextTextColor="@color/black"
+            app:sv_selectedCircleColor="@color/green"
+            app:sv_selectedCircleRadius="12dp"
+            app:sv_selectedStepNumberColor="@color/white"
+            app:sv_selectedTextColor="@color/black"
+            app:sv_stepLineWidth="2dp"
+            app:sv_stepNumberTextSize="15dp"
+            app:sv_stepPadding="5dp"
+            app:sv_stepViewStyle="@style/StepView"
+            android:layout_marginBottom="10dp"/>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_gravity="center"
+                    android:background="@android:color/darker_gray" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="What type of organic waste do you want to contribute?"
+                        android:textColor="@color/black"
+                        android:fontFamily="@font/light"
+                        android:textSize="15dp"
+                        android:onClick="onCheckboxClicked"/>
+
+                    <CheckBox
+                        android:id="@+id/cbFruits"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:tag="Fruits"
+                        android:fontFamily="@font/light"
+                        android:textColor="@color/black"
+                        android:text="Fruits"
+                        android:onClick="onCheckboxClicked"/>
+
+                    <CheckBox
+                        android:id="@+id/cbVegetables"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:tag="Mango"
+                        android:fontFamily="@font/light"
+                        android:textColor="@color/black"
+                        android:text="Vegetables"
+                        android:onClick="onCheckboxClicked"/>
+
+                    <CheckBox
+                        android:id="@+id/cbLeaves"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:tag="Fruits"
+                        android:fontFamily="@font/light"
+                        android:textColor="@color/black"
+                        android:text="Leaves"
+                        android:onClick="onCheckboxClicked"/>
+
+                    <CheckBox
+                        android:id="@+id/cbPaper"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:tag="Cardboard"
+                        android:fontFamily="@font/light"
+                        android:textColor="@color/black"
+                        android:text="Paper/Cardboard"
+                        android:onClick="onCheckboxClicked"/>
+
+                </LinearLayout>
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_gravity="center"
+                    android:background="@android:color/darker_gray" />
+
+                <TextView
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="How many days does this waste been there?"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/light"
+                    android:textSize="15dp" />
+
+                <LinearLayout
+                    android:id="@+id/lay1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <CheckBox
+                        android:id="@+id/cbChoiceDay1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:tag="1-2 days"
+                        android:fontFamily="@font/light"
+                        android:textColor="@color/black"
+                        android:text="1 - 2 days" />
+
+                    <CheckBox
+                        android:id="@+id/cbChoiceDay2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:tag="3 - 4 days"
+                        android:fontFamily="@font/light"
+                        android:textColor="@color/black"
+                        android:text="3 - 4 days" />
+
+                    <CheckBox
+                        android:id="@+id/cbChoiceDay3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:tag="Banana"
+                        android:fontFamily="@font/light"
+                        android:textColor="@color/black"
+                        android:text="1 Week" />
+
+                    <CheckBox
+                        android:id="@+id/cbChoiceDay4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:tag="More than a week"
+                        android:fontFamily="@font/light"
+                        android:textColor="@color/black"
+                        android:text="More than a week" />
+                    <CheckBox
+                        android:id="@+id/cbChoiceDay5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:tag="More than a week"
+                        android:fontFamily="@font/light"
+                        android:textColor="@color/black"
+                        android:text="A month or more than a month" />
+
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/btnNextS1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right"
+                    android:backgroundTint="@color/white"
+                    android:fontFamily="@font/light"
+                    android:text="Next "
+                    android:textColor="@color/black"
+                    android:textSize="15dp" />
+            </LinearLayout>
+        </ScrollView>
+
+    </LinearLayout>
