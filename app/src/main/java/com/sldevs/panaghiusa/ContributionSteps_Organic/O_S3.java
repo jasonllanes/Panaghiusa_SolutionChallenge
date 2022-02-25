@@ -22,6 +22,7 @@ import com.shuhart.stepview.StepView;
 import com.sldevs.panaghiusa.ContributionSteps_Plastic.P_S3;
 import com.sldevs.panaghiusa.Home_Screen;
 import com.sldevs.panaghiusa.Plastic_Contribution;
+import com.sldevs.panaghiusa.ProfilePane.MyContribution;
 import com.sldevs.panaghiusa.R;
 
 import java.text.SimpleDateFormat;
@@ -116,7 +117,7 @@ public class O_S3 extends AppCompatActivity {
         btnTrack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(O_S3.this,Home_Screen.class);
+                Intent i = new Intent(O_S3.this, MyContribution.class);
                 i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(i);
                 finish();

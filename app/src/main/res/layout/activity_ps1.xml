@@ -52,109 +52,132 @@
         app:sv_stepLineWidth="2dp"
         app:sv_stepNumberTextSize="15dp"
         app:sv_stepPadding="5dp"
-        app:sv_stepViewStyle="@style/StepView"
-        android:layout_marginBottom="10dp"/>
+        app:sv_stepViewStyle="@style/StepView" />
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-    <LinearLayout
-        android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:layout_gravity="center"
-        android:orientation="vertical">
-
-
-        <ImageView
-            android:id="@+id/ivScanned"
-            android:layout_width="300dp"
-            android:layout_height="300dp"
+        >
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
             android:layout_gravity="center"
-            android:background="@drawable/avatar"/>
-        <TextView
-            android:id="@+id/tvType"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Type of Plastic"
-            android:textSize="20dp"
-            android:textAllCaps="true"
-            android:textColor="@android:color/holo_green_light"
-            android:layout_gravity="center"/>
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_gravity="center"
-            android:background="@android:color/darker_gray"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Confidence: "
-            android:textSize="10dp"
-            android:textAllCaps="true"
-            android:textColor="@color/black"
-            />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:text=""
-            android:textColor="#000"
-            android:textSize="15sp"
-            android:id="@+id/tvConfidence"
-            android:layout_below="@+id/confidencesText"
-            />
+            android:orientation="vertical">
 
 
-        <Button
-            android:id="@+id/btnCapture"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="Capture Image"
-            android:textSize="20dp"
-            android:textColor="@color/black"
-            android:fontFamily="@font/light"
-            android:backgroundTint="@color/white"/>
-        <Button
-            android:id="@+id/btnUpload"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="20dp"
-            android:text="Upload Image"
-            android:textSize="20dp"
-            android:textColor="@color/black"
-            android:fontFamily="@font/light"
-            android:backgroundTint="@color/white"/>
-        <TextView
-            android:id="@+id/tvAccurateness"
-            android:visibility="invisible"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Are we providing the correct result? If not"
-            android:textSize="15dp"
-            android:textColor="@android:color/holo_red_dark"
-            android:layout_gravity="center"/>
-        <Button
-            android:id="@+id/btnCategory"
-            android:visibility="invisible"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="Select accurate category"
-            android:textSize="10dp"
-            android:textColor="@color/black"
-            android:fontFamily="@font/light"
-            android:backgroundTint="@color/white"/>
-        <Button
-            android:id="@+id/btnNextS1"
-            android:visibility="invisible"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Next "
-            android:textSize="15dp"
-            android:textColor="@color/black"
-            android:fontFamily="@font/light"
-            android:layout_gravity="right"
-            android:backgroundTint="@color/white"/>
-    </LinearLayout>
+            <ImageView
+                android:id="@+id/ivScanned"
+                android:layout_width="300dp"
+                android:layout_height="300dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="100dp"
+                android:background="@drawable/upload"/>
+            <TextView
+                android:id="@+id/tvType"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Type of Plastic"
+                android:textSize="20dp"
+                android:textAllCaps="true"
+                android:textColor="@android:color/holo_green_light"
+                android:layout_gravity="center"/>
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_gravity="center"
+                android:background="@android:color/darker_gray"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Confidence: "
+                android:textSize="10dp"
+                android:textAllCaps="true"
+                android:textColor="@color/black"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:text=""
+                android:textColor="#000"
+                android:textSize="15sp"
+                android:id="@+id/tvConfidence"
+                android:layout_below="@+id/confidencesText"
+                />
+
+
+            <Button
+                android:id="@+id/btnCapture"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Capture Image"
+                android:textSize="20dp"
+                android:textColor="@color/black"
+                android:fontFamily="@font/light"
+                android:backgroundTint="@color/white"/>
+            <Button
+                android:id="@+id/btnUpload"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="10dp"
+                android:text="Upload Image"
+                android:textSize="20dp"
+                android:textColor="@color/black"
+                android:fontFamily="@font/light"
+                android:backgroundTint="@color/white"/>
+
+            <Button
+                android:id="@+id/btnAddCart"
+                android:visibility="invisible"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Add to Cart"
+                android:textSize="10dp"
+                android:textColor="@color/black"
+                android:fontFamily="@font/light"
+                android:backgroundTint="@color/white"/>
+            <Button
+                android:id="@+id/btnShowCart"
+                android:visibility="invisible"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Show Cart"
+                android:textSize="10dp"
+                android:textColor="@color/black"
+                android:fontFamily="@font/light"
+                android:backgroundTint="@color/white"/>
+
+            <TextView
+                android:id="@+id/tvAccurateness"
+                android:visibility="invisible"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Are we providing the correct result? If not"
+                android:textSize="15dp"
+                android:textColor="@android:color/holo_red_dark"
+                android:layout_gravity="center"/>
+            <Button
+                android:id="@+id/btnCategory"
+                android:visibility="invisible"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Select accurate category"
+                android:textSize="10dp"
+                android:textColor="@color/black"
+                android:fontFamily="@font/light"
+                android:backgroundTint="@color/white"/>
+            <Button
+                android:id="@+id/btnNextS1"
+                android:visibility="invisible"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Next "
+                android:textSize="15dp"
+                android:textColor="@color/black"
+                android:fontFamily="@font/light"
+                android:layout_gravity="right"
+                android:backgroundTint="@color/white"/>
+        </LinearLayout>
     </ScrollView>
 
 </LinearLayout>

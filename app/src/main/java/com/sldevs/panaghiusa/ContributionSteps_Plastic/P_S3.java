@@ -22,6 +22,7 @@ import com.google.firebase.storage.StorageReference;
 import com.shuhart.stepview.StepView;
 import com.sldevs.panaghiusa.Home_Screen;
 import com.sldevs.panaghiusa.Plastic_Contribution;
+import com.sldevs.panaghiusa.ProfilePane.MyContribution;
 import com.sldevs.panaghiusa.R;
 import com.sldevs.panaghiusa.Sign_Up;
 import com.sldevs.panaghiusa.User;
@@ -125,7 +126,7 @@ public class P_S3 extends AppCompatActivity {
         btnTrack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(P_S3.this,Home_Screen.class);
+                Intent i = new Intent(P_S3.this, MyContribution.class);
                 i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(i);
                 finish();

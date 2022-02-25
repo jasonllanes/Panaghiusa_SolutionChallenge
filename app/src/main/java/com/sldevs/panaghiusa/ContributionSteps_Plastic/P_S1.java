@@ -2,6 +2,7 @@ package com.sldevs.panaghiusa.ContributionSteps_Plastic;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.DialogFragment;
 
 import android.Manifest;
@@ -10,6 +11,8 @@ import android.app.Dialog;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.ColorDrawable;
 import android.media.ThumbnailUtils;
 import android.net.Uri;
@@ -31,19 +34,25 @@ import com.sldevs.panaghiusa.ml.Model;
 import org.tensorflow.lite.DataType;
 import org.tensorflow.lite.support.tensorbuffer.TensorBuffer;
 
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 
 public class P_S1 extends AppCompatActivity {
     public StepView stepView;
-    Button btnUpload,btnCapture,btnCategory,btnNextS1;
-    ImageView btnBackS1,ivScanned;
+    Button btnUpload,btnCapture,btnCategory,btnNextS1,btnAddCart,btnShowCart;
+    ImageView btnBackS1,ivScanned,ivQR;
     TextView tvType,tvConfidence,tvAccurateness;
     public static final int GET_FROM_GALLERY = 3;
     int imageSize = 224;
+    int imageID[];
+    ArrayList<Bitmap> bitmapArray = new ArrayList<Bitmap>();
+    int cartValue = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,13 +61,15 @@ public class P_S1 extends AppCompatActivity {
         btnUpload = findViewById(R.id.btnUpload);
         btnNextS1 = findViewById(R.id.btnNextS1);
         btnCategory = findViewById(R.id.btnCategory);
+        btnAddCart = findViewById(R.id.btnAddCart);
+        btnShowCart = findViewById(R.id.btnShowCart);
         tvAccurateness = findViewById(R.id.tvAccurateness);
         tvConfidence = findViewById(R.id.tvConfidence);
         tvType = findViewById(R.id.tvType);
         stepView = findViewById(R.id.step_view);
         btnBackS1 = findViewById(R.id.btnBackS1);
         ivScanned = findViewById(R.id.ivScanned);
-
+        ivQR = findViewById(R.id.ivQR);
         stepView.getState()
                 .animationType(StepView.ANIMATION_ALL)
                 .steps(new ArrayList<String>() {{
@@ -96,8 +107,44 @@ public class P_S1 extends AppCompatActivity {
                 startActivityForResult(new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.INTERNAL_CONTENT_URI), GET_FROM_GALLERY);
             }
         });
+
+        btnAddCart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                BitmapDrawable drawable = (BitmapDrawable) ivScanned.getDrawable();
+                Bitmap bitmap = drawable.getBitmap();
+//                bmp_images.add(0,bitmap);
+                bitmapArray.add(0, bitmap);
+                cartValue++;
+                ByteArrayOutputStream stream = new ByteArrayOutputStream();
+                bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
+                byte[] imageInByte = stream.toByteArray();
+
+                ivScanned.setImageDrawable(ContextCompat.getDrawable(getApplicationContext(), R.drawable.upload));
+//                cartValue++;
 //
 
+            }
+        });
+        btnShowCart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+//                imageViewClose = showQRshowQR.findViewById(R.id.ivClose);
+//                showQR.setContentView(R.layout.show_qrcode);
+//                showQR.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+
+                Dialog builder = new Dialog(P_S1.this);
+                builder.requestWindowFeature(Window.FEATURE_NO_TITLE);
+                builder.setContentView(R.layout.show_qrcode);
+                builder.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
+                builder.show();
+                Bitmap image = bitmapArray.get(0);
+                int dimension = Math.min(image.getWidth(), image.getHeight());
+                image = ThumbnailUtils.extractThumbnail(image,dimension, dimension);
+                ivQR = builder.findViewById(R.id.ivQR);
+                ivQR.setImageBitmap(image);
+            }
+        });
         btnNextS1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -188,6 +235,8 @@ public class P_S1 extends AppCompatActivity {
             tvAccurateness.setVisibility(View.VISIBLE);
             btnCategory.setVisibility(View.VISIBLE);
             btnNextS1.setVisibility(View.VISIBLE);
+            btnAddCart.setVisibility(View.VISIBLE);
+            btnShowCart.setVisibility(View.VISIBLE);
         }
         super.onActivityResult(requestCode, resultCode, data);
         if(requestCode==GET_FROM_GALLERY && resultCode == Activity.RESULT_OK) {
@@ -204,6 +253,8 @@ public class P_S1 extends AppCompatActivity {
                 tvAccurateness.setVisibility(View.VISIBLE);
                 btnCategory.setVisibility(View.VISIBLE);
                 btnNextS1.setVisibility(View.VISIBLE);
+                btnAddCart.setVisibility(View.VISIBLE);
+                btnShowCart.setVisibility(View.VISIBLE);
             } catch (FileNotFoundException e) {
                 // TODO Auto-generated catch block
                 e.printStackTrace();
