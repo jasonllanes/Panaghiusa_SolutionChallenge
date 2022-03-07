@@ -14,9 +14,12 @@ import android.util.Patterns;
 import android.view.Display;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -52,10 +55,13 @@ public class Sign_Up extends AppCompatActivity {
     private TextView tvLogIn;
     private Button btnSignUp;
     private ProgressBar pbLoading;
+    private Spinner city,barangay;
     Bitmap bitmap;
     QRGEncoder qrgEncoder;
     String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
     UploadTask uploadTask;
+
+    String selectedCity,selectedBarangay;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -74,6 +80,30 @@ public class Sign_Up extends AppCompatActivity {
         btnSignUp = findViewById(R.id.btnCreateAccount);
 
         pbLoading = findViewById(R.id.pbLoading);
+
+
+        city = findViewById(R.id.sCity);
+        barangay = findViewById(R.id.sBarangay);
+
+        ArrayAdapter<CharSequence> cityAdapter = ArrayAdapter.createFromResource(Sign_Up.this,R.array.cities, android.R.layout.simple_spinner_item);
+        cityAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        city.setAdapter(cityAdapter);
+        city.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                String city = adapterView.getItemAtPosition(i).toString();
+                selectedCity = city;
+                cityDetect(city);
+                Toast.makeText(Sign_Up.this,city,Toast.LENGTH_SHORT).show();
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
 
         btnSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -96,6 +126,7 @@ public class Sign_Up extends AppCompatActivity {
         String fullname = etFullName.getText().toString().trim();
         String email = etEmail.getText().toString().trim();
         String number = etMobileNo.getText().toString().trim();
+        String city1 = selectedCity;
         String password = etPassword.getText().toString().trim();
 
         if(fullname.isEmpty()){
@@ -147,7 +178,7 @@ public class Sign_Up extends AppCompatActivity {
                                 currentTime = currentTime + " AM";
                             }
 
-                            User user = new User(id,"https://firebasestorage.googleapis.com/v0/b/panaghiusa-28480.appspot.com/o/ProfilePicture%2F" + id+"user_profile.png?alt=media&token=7f2781fc-0fd8-425b-b766-9d03bad7595d",fullname,email,number,password,"0",currentDate,currentTime);
+                            User user = new User(id,"https://firebasestorage.googleapis.com/v0/b/panaghiusa-28480.appspot.com/o/ProfilePicture%2F" + id+"user_profile.png?alt=media&token=7f2781fc-0fd8-425b-b766-9d03bad7595d",fullname,email,number,selectedCity,selectedBarangay,password,"0",currentDate,currentTime);
 
                             FirebaseDatabase.getInstance().getReference("Users")
                                     .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
@@ -161,7 +192,6 @@ public class Sign_Up extends AppCompatActivity {
                                         passUserToken();
                                         Toast.makeText(Sign_Up.this,"You created an account successfully",Toast.LENGTH_LONG).show();
                                         pbLoading.setVisibility(View.GONE);
-
                                     }else{
                                         Toast.makeText(Sign_Up.this,"Failed to register",Toast.LENGTH_LONG).show();
                                         pbLoading.setVisibility(View.GONE);
@@ -256,9 +286,58 @@ public class Sign_Up extends AppCompatActivity {
                 }
             });
         } catch (WriterException e) {
-            // this method is called for
-            // exception handling.
             Log.e("Tag", e.toString());
         }
     }
+    public String cityDetect(String city){
+        if(city.equalsIgnoreCase("City")){
+            ArrayAdapter<CharSequence> barangayAdapter = ArrayAdapter.createFromResource(Sign_Up.this,R.array.empty, android.R.layout.simple_spinner_item);
+            barangayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            barangay.setAdapter(barangayAdapter);
+            barangay.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                @Override
+                public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+
+                }
+
+                @Override
+                public void onNothingSelected(AdapterView<?> adapterView) {
+
+                }
+            });
+        }else if(city.equalsIgnoreCase("Cagayan de Oro City")){
+            ArrayAdapter<CharSequence> barangayAdapter = ArrayAdapter.createFromResource(Sign_Up.this,R.array.cdo, android.R.layout.simple_spinner_item);
+            barangayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            barangay.setAdapter(barangayAdapter);
+            barangay.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                @Override
+                public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                    String barangay = adapterView.getItemAtPosition(i).toString();
+                    selectedBarangay = barangay;
+                }
+
+                @Override
+                public void onNothingSelected(AdapterView<?> adapterView) {
+
+                }
+            });
+        }else{
+            ArrayAdapter<CharSequence> barangayAdapter = ArrayAdapter.createFromResource(Sign_Up.this,R.array.cities, android.R.layout.simple_spinner_item);
+            barangayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            barangay.setAdapter(barangayAdapter);
+            barangay.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                @Override
+                public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+
+                }
+
+                @Override
+                public void onNothingSelected(AdapterView<?> adapterView) {
+
+                }
+            });
+        }
+        return city;
+    }
+
 }

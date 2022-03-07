@@ -1,5 +1,7 @@
 package com.sldevs.panaghiusa.ContributionSteps_Plastic;
 
+import static androidx.camera.core.CameraX.getContext;
+
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -25,6 +27,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.shuhart.stepview.StepView;
 import com.sldevs.panaghiusa.R;
 
@@ -34,6 +42,11 @@ import java.util.Locale;
 import java.util.Random;
 
 public class P_S2 extends AppCompatActivity {
+
+    FirebaseDatabase firebaseDatabase;
+    DatabaseReference databaseReference;
+    String uid;
+
     public StepView stepView;
     ImageView btnBackS2;
     TextView tvFullnameReport,tvMobileNo, tvAddress, tvLatandLong, btnGetLocation,tvReportID;
@@ -51,6 +64,12 @@ public class P_S2 extends AppCompatActivity {
         ActivityCompat.requestPermissions(this, new String[]
                 {Manifest.permission.ACCESS_FINE_LOCATION},REQUEST_LOCATION);
 
+        String plasticURL = getIntent().getStringExtra("plasticURL");
+
+
+        firebaseDatabase = FirebaseDatabase.getInstance();
+        uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        databaseReference = firebaseDatabase.getReference("Users/" + uid);
 
         btnGetLocation = findViewById(R.id.btnGetLocation);
         tvFullnameReport = findViewById(R.id.tvFullnameReport);
@@ -64,6 +83,7 @@ public class P_S2 extends AppCompatActivity {
         btnNextS2 = findViewById(R.id.btnNextS2);
 
         generateContributionID();
+        getData();
 
         btnGetLocation.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -207,5 +227,31 @@ public class P_S2 extends AppCompatActivity {
         alertDialog.show();
 
     }
+
+   public void getData(){
+       databaseReference.addValueEventListener(new ValueEventListener() {
+           @Override
+           public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+               String fullname = snapshot.child("fullname").getValue(String.class);
+               String email = snapshot.child("email").getValue(String.class);
+               String number = snapshot.child("number").getValue(String.class);
+               String city = snapshot.child("city").getValue(String.class);
+               String barangay = snapshot.child("barangay").getValue(String.class);
+               String fullAddress = barangay + ", " + city;
+
+               tvFullnameReport.setText(fullname);
+               tvMobileNo.setText(number);
+               tvAddress.setText(fullAddress);
+
+
+           }
+
+           @Override
+           public void onCancelled(@NonNull DatabaseError error) {
+               Toast.makeText(P_S2.this, "Fail to get data.", Toast.LENGTH_SHORT).show();
+           }
+       });
+   }
 
 }

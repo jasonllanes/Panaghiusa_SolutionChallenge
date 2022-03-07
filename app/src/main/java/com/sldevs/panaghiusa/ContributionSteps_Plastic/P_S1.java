@@ -1,5 +1,6 @@
 package com.sldevs.panaghiusa.ContributionSteps_Plastic;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
@@ -19,16 +20,31 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
+import com.google.zxing.WriterException;
 import com.shuhart.stepview.StepView;
+import com.sldevs.panaghiusa.Cart;
+import com.sldevs.panaghiusa.Home_Screen;
 import com.sldevs.panaghiusa.R;
+import com.sldevs.panaghiusa.Sign_Up;
+import com.sldevs.panaghiusa.databinding.ActivityPs1Binding;
 import com.sldevs.panaghiusa.ml.Model;
 
 import org.tensorflow.lite.DataType;
@@ -38,25 +54,39 @@ import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.Serializable;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 
 public class P_S1 extends AppCompatActivity {
+    private FirebaseAuth mAuth;
+    private FirebaseStorage storage;
+    private StorageReference storageReference;
+
     public StepView stepView;
-    Button btnUpload,btnCapture,btnCategory,btnNextS1,btnAddCart,btnShowCart;
-    ImageView btnBackS1,ivScanned,ivQR;
+    Button btnUpload,btnCapture,btnCategory,btnNextS1,btnAddCart,btnShowCart,btnAddToCart,btnNo;
+    ImageView btnBackS1,ivScanned,ivPopScanned,ivClose;
     TextView tvType,tvConfidence,tvAccurateness;
     public static final int GET_FROM_GALLERY = 3;
     int imageSize = 224;
     int imageID[];
-    ArrayList<Bitmap> bitmapArray = new ArrayList<Bitmap>();
+    public ArrayList<Bitmap> bitmapArray = new ArrayList<Bitmap>();
+    public ArrayList<String> plasticType = new ArrayList<String>();
     int cartValue = 0;
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ps1);
+
+        mAuth = FirebaseAuth.getInstance();
+        storage = FirebaseStorage.getInstance();
+        storageReference = storage.getReference();
+
         btnCapture = findViewById(R.id.btnCapture);
         btnUpload = findViewById(R.id.btnUpload);
         btnNextS1 = findViewById(R.id.btnNextS1);
@@ -69,7 +99,7 @@ public class P_S1 extends AppCompatActivity {
         stepView = findViewById(R.id.step_view);
         btnBackS1 = findViewById(R.id.btnBackS1);
         ivScanned = findViewById(R.id.ivScanned);
-        ivQR = findViewById(R.id.ivQR);
+        ivClose = findViewById(R.id.ivClose);
         stepView.getState()
                 .animationType(StepView.ANIMATION_ALL)
                 .steps(new ArrayList<String>() {{
@@ -111,44 +141,23 @@ public class P_S1 extends AppCompatActivity {
         btnAddCart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                BitmapDrawable drawable = (BitmapDrawable) ivScanned.getDrawable();
-                Bitmap bitmap = drawable.getBitmap();
-//                bmp_images.add(0,bitmap);
-                bitmapArray.add(0, bitmap);
-                cartValue++;
-                ByteArrayOutputStream stream = new ByteArrayOutputStream();
-                bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
-                byte[] imageInByte = stream.toByteArray();
-
-                ivScanned.setImageDrawable(ContextCompat.getDrawable(getApplicationContext(), R.drawable.upload));
-//                cartValue++;
-//
+                cartPop();
 
             }
         });
         btnShowCart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                imageViewClose = showQRshowQR.findViewById(R.id.ivClose);
-//                showQR.setContentView(R.layout.show_qrcode);
-//                showQR.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-
-                Dialog builder = new Dialog(P_S1.this);
-                builder.requestWindowFeature(Window.FEATURE_NO_TITLE);
-                builder.setContentView(R.layout.show_qrcode);
-                builder.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
-                builder.show();
-                Bitmap image = bitmapArray.get(0);
-                int dimension = Math.min(image.getWidth(), image.getHeight());
-                image = ThumbnailUtils.extractThumbnail(image,dimension, dimension);
-                ivQR = builder.findViewById(R.id.ivQR);
-                ivQR.setImageBitmap(image);
+                Intent i = new Intent(P_S1.this, C.class);
+                i.putStringArrayListExtra("plasticTypeList",plasticType);
+                startActivity(i);
             }
         });
         btnNextS1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(P_S1.this,P_S2.class);
+                i.putExtra("plasticURL", cartValue);
                 startActivity(i);
 
             }
@@ -168,6 +177,118 @@ public class P_S1 extends AppCompatActivity {
 
 //        getSupportFragmentManager().beginTransaction()
 //                .replace(R.id.steps_frame,new S1()).commit();
+
+    }
+    public void cartPop(){
+//        BitmapDrawable drawable = (BitmapDrawable) ivScanned.getDrawable();
+//        Bitmap bitmap = drawable.getBitmap();
+//        bitmapArray.add(cartValue, bitmap);
+//        plasticType.add(cartValue, tvType.getText().toString());
+        Dialog builder = new Dialog(P_S1.this);
+        builder.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        builder.setContentView(R.layout.add_to_cart);
+        builder.setCancelable(false);
+        builder.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
+        builder.show();
+
+//        Bitmap image = bitmapArray.get(0);
+//        int dimension = Math.min(image.getWidth(), image.getHeight());
+//        image = ThumbnailUtils.extractThumbnail(image,dimension, dimension);
+
+        ivClose = builder.findViewById(R.id.ivClose);
+        btnAddToCart = builder.findViewById(R.id.btnAddToCart);
+        btnNo = builder.findViewById(R.id.btnNo);
+
+
+        btnAddToCart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                String id = FirebaseAuth.getInstance().getUid();
+                StorageReference tempPlasticImage = storageReference.child(id + ".png");
+                StorageReference tempPlasticImageRef = storageReference.child("UsersCartTempLog/" + id + "_"+cartValue + "/" + id + "cartItem_" + cartValue + ".png");
+                tempPlasticImage.getName().equals(tempPlasticImageRef.getName());
+                tempPlasticImage.getPath().equals(tempPlasticImageRef.getPath());
+
+
+                BitmapDrawable drawable = (BitmapDrawable) ivScanned.getDrawable();
+                Bitmap bitmap = drawable.getBitmap();
+                ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                bitmap.compress(Bitmap.CompressFormat.PNG, 100, baos);
+                byte[] data = baos.toByteArray();
+
+                if(cartValue == 0){
+                    tempPlasticImageRef.delete().addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+                            FirebaseDatabase.getInstance().getReference("UsersCartTempLog/" + id).removeValue().addOnCompleteListener(new OnCompleteListener<Void>() {
+                                @Override
+                                public void onComplete(@NonNull Task<Void> task) {
+                                    Toast.makeText(P_S1.this,"Deleted successfully!",Toast.LENGTH_SHORT).show();
+                                }
+                            }).addOnFailureListener(new OnFailureListener() {
+                                @Override
+                                public void onFailure(@NonNull Exception e) {
+
+                                }
+                            });
+                        }
+                    }).addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+
+                        }
+                    });
+
+                }
+
+                UploadTask upload = tempPlasticImageRef.putBytes(data);
+                upload.addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                    @Override
+                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                        String id = FirebaseAuth.getInstance().getUid();
+
+                        Cart c = new Cart(tvType.getText().toString(),"https://firebasestorage.googleapis.com/v0/b/panaghiusa-28480.appspot.com/o/UsersCartTempLog%2F"+ id+ "_" +cartValue +"%2F"+id+"cartItem_" + cartValue+ ".png?alt=media&token=57cf74b7-5dbc-4bdf-aaf3-69b6176b6ecd");
+                        FirebaseDatabase.getInstance().getReference("UsersCartTempLog")
+                                .child(id + "/" + id + "_" + cartValue)
+                                .setValue(c).addOnCompleteListener(new OnCompleteListener<Void>() {
+                            @Override
+                            public void onComplete(@NonNull Task<Void> task) {
+                                if(task.isSuccessful()){
+                                    Toast.makeText(P_S1.this,"Added to cart successfully!",Toast.LENGTH_SHORT).show();
+                                    plasticType.add(cartValue, tvType.getText().toString());
+                                    ivScanned.setImageDrawable(ContextCompat.getDrawable(getApplicationContext(), R.drawable.upload));
+                                    System.out.println(plasticType.get(cartValue));
+                                    cartValue = cartValue + 1;
+                                    tvType.setText("Type of Plastic");
+                                    tvConfidence.setText("");
+                                    btnAddCart.setVisibility(View.GONE);
+                                    builder.dismiss();
+                                }else{
+
+                                }
+                            }
+                        });
+
+
+
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(P_S1.this,e.toString(),Toast.LENGTH_LONG).show();
+                    }
+                });
+
+            }
+        });
+
+        btnNo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                builder.dismiss();
+            }
+        });
 
     }
     private void classifyImage(Bitmap image) {
@@ -198,6 +319,7 @@ public class P_S1 extends AppCompatActivity {
 
             float[] confidences = outputFeature0.getFloatArray();
             // find the index of the class with the biggest confidence.
+
             int maxPos = 0;
             float maxConfidence = 0;
             for(int i = 0; i < confidences.length; i++){
@@ -266,6 +388,5 @@ public class P_S1 extends AppCompatActivity {
 
 
     }
-
 
 }

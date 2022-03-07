@@ -94,7 +94,8 @@ public class P_S3 extends AppCompatActivity {
                     currentTime = currentTime + " AM";
                 }
 
-                Plastic_Contribution pc = new Plastic_Contribution(contrbutionID,fullname,number,address,latandlong,currentDate,currentTime);
+                String id = FirebaseAuth.getInstance().getUid();
+                Plastic_Contribution pc = new Plastic_Contribution("UsersCartTempLog/" + id,contrbutionID,fullname,number,address,latandlong,currentDate,currentTime);
                 FirebaseDatabase.getInstance().getReference("PlasticContribution")
                         .child(contrbutionID)
                         .setValue(pc).addOnCompleteListener(new OnCompleteListener<Void>() {

@@ -84,32 +84,32 @@ public class O_S3 extends AppCompatActivity {
                     currentTime = currentTime + " AM";
                 }
 
-                Plastic_Contribution pc = new Plastic_Contribution(contrbutionID,fullname,number,address,latandlong,currentDate,currentTime);
-                FirebaseDatabase.getInstance().getReference("OrganicContribution")
-                        .child(contrbutionID)
-                        .setValue(pc).addOnCompleteListener(new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        if(task.isSuccessful()){
-                            tvLabel.setText("Thank you for contributing!");
-                            Toast.makeText(O_S3.this,"Thank you for contributing!",Toast.LENGTH_LONG).show();
-                            stepView.done(true);
-                            pbLoadingContribution.setVisibility(View.GONE);
-                            btnBackS3.setVisibility(View.GONE);
-                            btnSubmit.setVisibility(View.GONE);
-                            btnCancel.setVisibility(View.GONE);
-                            tvTrack.setVisibility(View.VISIBLE);
-                            btnTrack.setVisibility(View.VISIBLE);
-
-                        }else{
-                            Toast.makeText(O_S3.this,"Contribution Failed!",Toast.LENGTH_LONG).show();
-                            pbLoadingContribution.setVisibility(View.GONE);
-                            Intent i = new Intent(O_S3.this, Home_Screen.class);
-                            startActivity(i);
-                            finish();
-                        }
-                    }
-                });
+//                Plastic_Contribution pc = new Plastic_Contribution(contrbutionID,fullname,number,address,latandlong,currentDate,currentTime);
+//                FirebaseDatabase.getInstance().getReference("OrganicContribution")
+//                        .child(contrbutionID)
+//                        .setValue(pc).addOnCompleteListener(new OnCompleteListener<Void>() {
+//                    @Override
+//                    public void onComplete(@NonNull Task<Void> task) {
+//                        if(task.isSuccessful()){
+//                            tvLabel.setText("Thank you for contributing!");
+//                            Toast.makeText(O_S3.this,"Thank you for contributing!",Toast.LENGTH_LONG).show();
+//                            stepView.done(true);
+//                            pbLoadingContribution.setVisibility(View.GONE);
+//                            btnBackS3.setVisibility(View.GONE);
+//                            btnSubmit.setVisibility(View.GONE);
+//                            btnCancel.setVisibility(View.GONE);
+//                            tvTrack.setVisibility(View.VISIBLE);
+//                            btnTrack.setVisibility(View.VISIBLE);
+//
+//                        }else{
+//                            Toast.makeText(O_S3.this,"Contribution Failed!",Toast.LENGTH_LONG).show();
+//                            pbLoadingContribution.setVisibility(View.GONE);
+//                            Intent i = new Intent(O_S3.this, Home_Screen.class);
+//                            startActivity(i);
+//                            finish();
+//                        }
+//                    }
+//                });
 
             }
         });

@@ -2,5 +2,20 @@
     <string name="app_name">Panaghiusa</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string-array name="cities">
+        <item></item>
+        <item>Cagayan de Oro City</item>
+        <item>Davao City</item>
+        <item>Cebu City</item>
+    </string-array>
 
+    <string-array name="empty">
+
+    </string-array>
+
+    <string-array name="cdo">
+        <item>Nazareth</item>
+        <item>Macasandig</item>
+        <item>Bulua</item>
+    </string-array>
 </resources>

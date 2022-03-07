@@ -102,8 +102,7 @@
                 android:textColor="#000"
                 android:textSize="15sp"
                 android:id="@+id/tvConfidence"
-                android:layout_below="@+id/confidencesText"
-                />
+                android:layout_below="@+id/confidencesText" />
 
 
             <Button

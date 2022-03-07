@@ -14,8 +14,7 @@
         android:layout_gravity="center"
         android:background="@drawable/logo"
         android:paddingTop="10dp"
-        android:text="picture sa logo"
-        />
+        android:text="picture sa logo" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -83,19 +82,46 @@
 
                 <EditText
                     android:id="@+id/etMobileNo"
-                    android:inputType="number"
-                    android:singleLine="true"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@drawable/green_rounded_corner"
                     android:layout_marginTop="25dp"
-                    android:padding="13dp"
-                    android:textSize="15sp"
-                    android:hint="Mobile No."
-                    android:textColorHint="@color/white"
-                    android:textColor="@color/white"
+                    android:background="@drawable/green_rounded_corner"
                     android:fontFamily="@font/light"
-                    />
+                    android:hint="Mobile No."
+                    android:inputType="number"
+                    android:padding="13dp"
+                    android:singleLine="true"
+                    android:textColor="@color/white"
+                    android:textColorHint="@color/white"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="City/Municipality"
+                    android:textSize="15dp"
+                    android:fontFamily="@font/light"
+                    android:layout_marginTop="25dp"
+                    android:textColor="@color/white"/>
+                <Spinner
+                    android:id="@+id/sCity"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Barangay"
+                    android:textSize="15dp"
+                    android:fontFamily="@font/light"
+                    android:layout_marginTop="25dp"
+                    android:textColor="@color/white"/>
+                <Spinner
+                    android:id="@+id/sBarangay"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"/>
+
+
 
                 <EditText
                     android:id="@+id/etPassword"
