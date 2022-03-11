@@ -37,6 +37,7 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.sldevs.panaghiusa.Log_In;
+import com.sldevs.panaghiusa.ProfilePane.MyContribution;
 import com.sldevs.panaghiusa.R;
 
 import java.io.IOException;
@@ -63,7 +64,7 @@ public class Profile extends Fragment {
     ImageView profilePicture;
     private TextView tvFullname,tvEmail,tvNumber;
     String uid;
-    Button btnShowQR,btnLogout;
+    Button btnShowQR,btnLogout,btnTrack;
     DialogFragment showQR;
     ImageView imageViewClose,ivQR;
     public Profile() {
@@ -118,6 +119,8 @@ public class Profile extends Fragment {
         tvNumber = view.findViewById(R.id.tvNumber);
         profilePicture = view.findViewById(R.id.profilePicture);
         btnLogout = view.findViewById(R.id.btnLogout);
+        btnTrack = view.findViewById(R.id.btnTrack);
+
 
         firebaseDatabase = FirebaseDatabase.getInstance();
         uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
@@ -163,6 +166,14 @@ public class Profile extends Fragment {
                     }
                 });
 
+            }
+        });
+
+        btnTrack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(getContext(), MyContribution.class);
+                startActivity(i);
             }
         });
 

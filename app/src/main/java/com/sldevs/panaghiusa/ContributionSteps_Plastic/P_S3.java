@@ -85,23 +85,26 @@ public class P_S3 extends AppCompatActivity {
                 String latandlong = getIntent().getStringExtra("latandlong");
 
                 String currentDate = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).format(new Date());
-                String currentTime = new SimpleDateFormat("HH:mm:ss", Locale.getDefault()).format(new Date());
+                String currentTime = new SimpleDateFormat("hh:mm:ss aa", Locale.getDefault()).format(new Date());
 
                 int timeIdentifier = Integer.parseInt(currentTime.substring(0,2));
-                if(timeIdentifier >= 12){
-                    currentTime = currentTime + " PM";
-                }else{
-                    currentTime = currentTime + " AM";
-                }
+//                if(timeIdentifier >= 12){
+//                    currentTime = currentTime + " PM";
+//                }else{
+//                    currentTime = currentTime + " AM";
+//                }
 
                 String id = FirebaseAuth.getInstance().getUid();
-                Plastic_Contribution pc = new Plastic_Contribution("UsersCartTempLog/" + id,contrbutionID,fullname,number,address,latandlong,currentDate,currentTime);
-                FirebaseDatabase.getInstance().getReference("PlasticContribution")
-                        .child(contrbutionID)
+                String items = getIntent().getStringExtra("numberOfItems");
+                int numberOfItems = Integer.parseInt(items) + 1;
+                Plastic_Contribution pc = new Plastic_Contribution("UsersCartTempLog/" + id,String.valueOf(numberOfItems),contrbutionID,id,fullname,number,address,latandlong,currentDate,currentTime);
+                FirebaseDatabase.getInstance().getReference("TBC_PlasticSpecific")
+                        .child(id +"/"+contrbutionID)
                         .setValue(pc).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         if(task.isSuccessful()){
+                            FirebaseDatabase.getInstance().getReference("TBC_PlasticAll").child(contrbutionID).setValue(pc);
                             tvLabel.setText("Thank you for contributing!");
                             Toast.makeText(P_S3.this,"Thank you for contributing!",Toast.LENGTH_LONG).show();
                             stepView.done(true);
@@ -137,7 +140,6 @@ public class P_S3 extends AppCompatActivity {
     }
     @Override
     public void onBackPressed() {
-
         Intent i = new Intent(P_S3.this,Home_Screen.class);
         i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(i);

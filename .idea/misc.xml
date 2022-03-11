@@ -39,7 +39,7 @@
         <entry key="..\:/Users/Jason/Desktop/Solution_Challenge_App_Default/Solution_Challenge_App/app/src/main/res/layout/activity_getting_started.xml" value="0.1" />
         <entry key="..\:/Users/Jason/Desktop/Solution_Challenge_App_Default/Solution_Challenge_App/app/src/main/res/layout/activity_home_screen.xml" value="0.2" />
         <entry key="..\:/Users/Jason/Desktop/Solution_Challenge_App_Default/Solution_Challenge_App/app/src/main/res/layout/activity_log_in.xml" value="0.22" />
-        <entry key="..\:/Users/Jason/Desktop/Solution_Challenge_App_Default/Solution_Challenge_App/app/src/main/res/layout/activity_my_contribution.xml" value="0.25" />
+        <entry key="..\:/Users/Jason/Desktop/Solution_Challenge_App_Default/Solution_Challenge_App/app/src/main/res/layout/activity_my_contribution.xml" value="0.33" />
         <entry key="..\:/Users/Jason/Desktop/Solution_Challenge_App_Default/Solution_Challenge_App/app/src/main/res/layout/activity_os1.xml" value="0.25" />
         <entry key="..\:/Users/Jason/Desktop/Solution_Challenge_App_Default/Solution_Challenge_App/app/src/main/res/layout/activity_os2.xml" value="0.25" />
         <entry key="..\:/Users/Jason/Desktop/Solution_Challenge_App_Default/Solution_Challenge_App/app/src/main/res/layout/activity_os3.xml" value="0.17617753623188406" />
@@ -51,13 +51,14 @@
         <entry key="..\:/Users/Jason/Desktop/Solution_Challenge_App_Default/Solution_Challenge_App/app/src/main/res/layout/activity_qrscanner.xml" value="0.2" />
         <entry key="..\:/Users/Jason/Desktop/Solution_Challenge_App_Default/Solution_Challenge_App/app/src/main/res/layout/activity_scan_qr.xml" value="0.1793478260869565" />
         <entry key="..\:/Users/Jason/Desktop/Solution_Challenge_App_Default/Solution_Challenge_App/app/src/main/res/layout/activity_scanned_barcode.xml" value="0.10833333333333334" />
-        <entry key="..\:/Users/Jason/Desktop/Solution_Challenge_App_Default/Solution_Challenge_App/app/src/main/res/layout/activity_scanned_result.xml" value="0.16" />
+        <entry key="..\:/Users/Jason/Desktop/Solution_Challenge_App_Default/Solution_Challenge_App/app/src/main/res/layout/activity_scanned_result.xml" value="0.33" />
         <entry key="..\:/Users/Jason/Desktop/Solution_Challenge_App_Default/Solution_Challenge_App/app/src/main/res/layout/activity_sign_up.xml" value="0.22" />
-        <entry key="..\:/Users/Jason/Desktop/Solution_Challenge_App_Default/Solution_Challenge_App/app/src/main/res/layout/activity_splash.xml" value="0.1793478260869565" />
+        <entry key="..\:/Users/Jason/Desktop/Solution_Challenge_App_Default/Solution_Challenge_App/app/src/main/res/layout/activity_splash.xml" value="0.16" />
         <entry key="..\:/Users/Jason/Desktop/Solution_Challenge_App_Default/Solution_Challenge_App/app/src/main/res/layout/add_to_cart.xml" value="0.33" />
         <entry key="..\:/Users/Jason/Desktop/Solution_Challenge_App_Default/Solution_Challenge_App/app/src/main/res/layout/cart_item_layout.xml" value="0.33" />
         <entry key="..\:/Users/Jason/Desktop/Solution_Challenge_App_Default/Solution_Challenge_App/app/src/main/res/layout/contribution_step_1.xml" value="0.1793478260869565" />
         <entry key="..\:/Users/Jason/Desktop/Solution_Challenge_App_Default/Solution_Challenge_App/app/src/main/res/layout/floating_profile.xml" value="0.1793478260869565" />
+        <entry key="..\:/Users/Jason/Desktop/Solution_Challenge_App_Default/Solution_Challenge_App/app/src/main/res/layout/fragment_c.xml" value="0.1897644927536232" />
         <entry key="..\:/Users/Jason/Desktop/Solution_Challenge_App_Default/Solution_Challenge_App/app/src/main/res/layout/fragment_contribute.xml" value="0.2" />
         <entry key="..\:/Users/Jason/Desktop/Solution_Challenge_App_Default/Solution_Challenge_App/app/src/main/res/layout/fragment_craft__guide.xml" value="0.1793478260869565" />
         <entry key="..\:/Users/Jason/Desktop/Solution_Challenge_App_Default/Solution_Challenge_App/app/src/main/res/layout/fragment_home.xml" value="0.1793478260869565" />
@@ -65,10 +66,14 @@
         <entry key="..\:/Users/Jason/Desktop/Solution_Challenge_App_Default/Solution_Challenge_App/app/src/main/res/layout/fragment_profile.xml" value="0.2" />
         <entry key="..\:/Users/Jason/Desktop/Solution_Challenge_App_Default/Solution_Challenge_App/app/src/main/res/layout/fragment_s1.xml" value="0.2" />
         <entry key="..\:/Users/Jason/Desktop/Solution_Challenge_App_Default/Solution_Challenge_App/app/src/main/res/layout/fragment_s2.xml" value="0.1793478260869565" />
+        <entry key="..\:/Users/Jason/Desktop/Solution_Challenge_App_Default/Solution_Challenge_App/app/src/main/res/layout/fragment_t_b_c.xml" value="0.25" />
+        <entry key="..\:/Users/Jason/Desktop/Solution_Challenge_App_Default/Solution_Challenge_App/app/src/main/res/layout/fragment_t_b_p.xml" value="0.33" />
         <entry key="..\:/Users/Jason/Desktop/Solution_Challenge_App_Default/Solution_Challenge_App/app/src/main/res/layout/plastic_categories.xml" value="0.25" />
-        <entry key="..\:/Users/Jason/Desktop/Solution_Challenge_App_Default/Solution_Challenge_App/app/src/main/res/layout/plastic_category.xml" value="0.5" />
+        <entry key="..\:/Users/Jason/Desktop/Solution_Challenge_App_Default/Solution_Challenge_App/app/src/main/res/layout/plastic_category.xml" value="0.25" />
         <entry key="..\:/Users/Jason/Desktop/Solution_Challenge_App_Default/Solution_Challenge_App/app/src/main/res/layout/show_cart.xml" value="0.22" />
         <entry key="..\:/Users/Jason/Desktop/Solution_Challenge_App_Default/Solution_Challenge_App/app/src/main/res/layout/show_qrcode.xml" value="0.25" />
+        <entry key="..\:/Users/Jason/Desktop/Solution_Challenge_App_Default/Solution_Challenge_App/app/src/main/res/layout/tbc_items.xml" value="0.33" />
+        <entry key="..\:/Users/Jason/Desktop/Solution_Challenge_App_Default/Solution_Challenge_App/app/src/main/res/layout/tbp_items.xml" value="0.5" />
         <entry key="..\:/Users/Jason/Desktop/Solution_Challenge_App_Default/Solution_Challenge_App/app/src/main/res/menu/bottom_menu.xml" value="0.22083333333333333" />
       </map>
     </option>

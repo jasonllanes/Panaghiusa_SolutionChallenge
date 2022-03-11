@@ -168,7 +168,7 @@ public class Sign_Up extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful()){
                             String currentDate = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).format(new Date());
-                            String currentTime = new SimpleDateFormat("HH:mm:ss", Locale.getDefault()).format(new Date());
+                            String currentTime = new SimpleDateFormat("hh:mm:ss aa", Locale.getDefault()).format(new Date());
                             String id = FirebaseAuth.getInstance().getUid();
 
                             int timeIdentifier = Integer.parseInt(currentTime.substring(0,2));

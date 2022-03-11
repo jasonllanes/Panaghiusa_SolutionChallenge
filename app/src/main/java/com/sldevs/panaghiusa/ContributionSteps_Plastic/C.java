@@ -32,7 +32,7 @@ import com.sldevs.panaghiusa.Cart_Item_Values;
 import com.sldevs.panaghiusa.Cart_Temp_Log;
 import com.sldevs.panaghiusa.Home_Screen;
 import com.sldevs.panaghiusa.R;
-import com.sldevs.panaghiusa.databinding.ActivityCBinding;
+
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;

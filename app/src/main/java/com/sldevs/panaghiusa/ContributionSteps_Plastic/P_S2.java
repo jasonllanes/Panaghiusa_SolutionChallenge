@@ -113,8 +113,10 @@ public class P_S2 extends AppCompatActivity {
         btnNextS2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                String items = getIntent().getStringExtra("itemNo");
                 Intent i = new Intent(P_S2.this,P_S3.class);
                 i.putExtra("contributionID", tvReportID.getText().toString());
+                i.putExtra("numberOfItems", items);
                 i.putExtra("fullname", tvFullnameReport.getText().toString());
                 i.putExtra("number", tvMobileNo.getText().toString());
                 i.putExtra("address", tvAddress.getText().toString());

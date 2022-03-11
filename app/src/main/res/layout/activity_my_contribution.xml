@@ -7,24 +7,59 @@
     android:orientation="vertical"
     tools:context=".ProfilePane.MyContribution">
 
-
-    <com.google.android.material.tabs.TabLayout
+    <TextView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:text="My Contribution"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:fontFamily="@font/bbold"
+        android:textSize="20sp"/>
 
-        <com.google.android.material.tabs.TabItem
-            android:layout_width="wrap_content"
+        <TableLayout
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="Monday" />
+            android:stretchColumns="1">
 
-        <com.google.android.material.tabs.TabItem
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Tuesday" />
+            <TableRow>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="To be Confirmed"
+                    android:gravity="left"
+                    android:fontFamily="@font/bbold"
+                    android:textColor="@color/black"
+                    android:background="@android:color/holo_blue_light"
+                    android:id="@+id/btnTBC"></TextView>
 
-        <com.google.android.material.tabs.TabItem
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Wednesday" />
-    </com.google.android.material.tabs.TabLayout>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="To be Pick-up"
+                    android:gravity="center"
+                    android:fontFamily="@font/bbold"
+                    android:textColor="@color/black"
+                    android:background="@android:color/holo_orange_light"
+                    android:id="@+id/btnTBP"></TextView>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Completed"
+                    android:gravity="right"
+                    android:fontFamily="@font/bbold"
+                    android:textColor="@color/black"
+                    android:background="@color/green"
+                    android:id="@+id/btnC"></TextView>
+            </TableRow>
+
+        </TableLayout>
+
+    <FrameLayout
+        android:id="@+id/contributionFrame"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white">
+    </FrameLayout>
+
 </LinearLayout>

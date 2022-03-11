@@ -111,6 +111,9 @@ public class P_S1 extends AppCompatActivity {
                 .animationDuration(getResources().getInteger(android.R.integer.config_shortAnimTime))
                 .commit();
 
+        setCartDefault();
+
+
         btnBackS1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -158,6 +161,7 @@ public class P_S1 extends AppCompatActivity {
             public void onClick(View view) {
                 Intent i = new Intent(P_S1.this,P_S2.class);
                 i.putExtra("plasticURL", cartValue);
+                i.putExtra("itemNo", String.valueOf(cartValue));
                 startActivity(i);
 
             }
@@ -262,6 +266,7 @@ public class P_S1 extends AppCompatActivity {
                                     cartValue = cartValue + 1;
                                     tvType.setText("Type of Plastic");
                                     tvConfidence.setText("");
+                                    btnNextS1.setVisibility(View.VISIBLE);
                                     btnAddCart.setVisibility(View.GONE);
                                     builder.dismiss();
                                 }else{
@@ -356,7 +361,7 @@ public class P_S1 extends AppCompatActivity {
             classifyImage(image);
             tvAccurateness.setVisibility(View.VISIBLE);
             btnCategory.setVisibility(View.VISIBLE);
-            btnNextS1.setVisibility(View.VISIBLE);
+
             btnAddCart.setVisibility(View.VISIBLE);
             btnShowCart.setVisibility(View.VISIBLE);
         }
@@ -374,7 +379,7 @@ public class P_S1 extends AppCompatActivity {
                 classifyImage(image);
                 tvAccurateness.setVisibility(View.VISIBLE);
                 btnCategory.setVisibility(View.VISIBLE);
-                btnNextS1.setVisibility(View.VISIBLE);
+
                 btnAddCart.setVisibility(View.VISIBLE);
                 btnShowCart.setVisibility(View.VISIBLE);
             } catch (FileNotFoundException e) {
@@ -388,5 +393,32 @@ public class P_S1 extends AppCompatActivity {
 
 
     }
+    public void setCartDefault(){
+        String id = FirebaseAuth.getInstance().getUid();
+        StorageReference tempPlasticImageRef = storageReference.child("UsersCartTempLog/" + id + "_"+cartValue + "/" + id + "cartItem_" + cartValue + ".png");
+        if(cartValue == 0){
+            tempPlasticImageRef.delete().addOnCompleteListener(new OnCompleteListener<Void>() {
+                @Override
+                public void onComplete(@NonNull Task<Void> task) {
+                    FirebaseDatabase.getInstance().getReference("UsersCartTempLog/" + id).removeValue().addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+                            Toast.makeText(P_S1.this,"Deleted successfully!",Toast.LENGTH_SHORT).show();
+                        }
+                    }).addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
 
+                        }
+                    });
+                }
+            }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception e) {
+
+                }
+            });
+
+        }
+    }
 }
